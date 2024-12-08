@@ -5,11 +5,12 @@ import App from './App.tsx'
 import { HashRouter } from 'react-router-dom'
 import { GlobalContextProvider } from './context/globalContext.tsx'
 
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <GlobalContextProvider>
       <HashRouter>
-        <App />
+          <App />
       </HashRouter>
     </GlobalContextProvider>
   </StrictMode>,
