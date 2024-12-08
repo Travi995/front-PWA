@@ -1,8 +1,10 @@
 import { ButtonDemo } from "@/components/buttonShadCn/buttonShadCn"
 import { InputDemo } from "@/components/inputShadCn/inputShadCn"
+import { showAlert } from "@/helpers/showAlert"
 import { user } from "@/hooks/users/users"
+import { fetchDefault } from "@/services/fetchDefault"
 import { tpDataUsersRegister } from "@/types/tpDataUsers"
-import { validateText } from "@/validations/validateInputsSesion"
+import { error } from "console"
 import { SyntheticEvent } from "react"
 import { useNavigate } from "react-router-dom"
 
@@ -33,15 +35,31 @@ const Register = () => {
 
 
         if (allInputsValid) {
-            navigate('/');
+            fetchDefault('http://localhost:3000/api/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(dataRegister),
+            }, () => {
+                showAlert({ type: 'success', title: 'Registro exitoso', description: '' })
+
+                navigate('/login');
+            }, () => {
+                showAlert({ type: 'error', title: 'Error', description: '' })
+            }
+            )
         }
 
+        
     }
+
+    
 
     return <form className="bg-white w-[30rem] h-max rounded-3xl flex flex-col items-center p-10 gap-4" onSubmit={handlerSubmit}>
         <h1 className="text-3xl font-bold w-[15rem] text-center">Bienvenido a CG</h1>
         <div className='flex flex-col w-[90%] gap-4 py-8'>
-            <InputDemo type='text' placeholder='Name' handlerChange={(arg) => handlerChange('name', arg)}/>
+            <InputDemo type='text' placeholder='Name' handlerChange={(arg) => handlerChange('name', arg)} />
             <InputDemo type='email' placeholder='Email' handlerChange={(arg) => handlerChange('email', arg)} />
             <InputDemo type='password' placeholder='Password' handlerChange={(arg) => handlerChange('password', arg)} />
             <InputDemo type='password' placeholder='Confirm your password' handlerChange={(arg) => handlerChange('confirmPassword', arg)} />

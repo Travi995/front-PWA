@@ -5,6 +5,8 @@ import { ButtonDemo } from '@/components/buttonShadCn/buttonShadCn';
 import { user } from '@/hooks/users/users';
 import { tpDataUsersLogin } from '@/types/tpDataUsers';
 import { SyntheticEvent } from 'react';
+import { fetchDefault } from '@/services/fetchDefault';
+import { showAlert } from '@/helpers/showAlert';
 
 
 
@@ -35,7 +37,19 @@ const Login = () => {
 
 
         if (allInputsValid) {
-            navigate('/');
+            fetchDefault('http://localhost:3000/api/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(dataLogin),
+            }, () => {
+                showAlert({ type: 'success', title: 'Login exitoso', description: '' })
+                navigate('/');
+            }, () => {
+                showAlert({ type: 'error', title: 'Error', description: '' })
+            }
+            )
         }
 
     }
