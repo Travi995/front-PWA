@@ -5,7 +5,9 @@ import Sesion from "./views/sesion/sesion"
 import Register from "./views/register/register"
 import Home from "./views/home/home"
 import Ingresos from "./views/ingresos/ingresos"
-import Inicio from "./views/inicio/inicio"
+import Gastos from "./views/gastos/gastos"
+import Transaccion from "./views/transaction/transaction"
+import AddCategory from "./views/addCategory/addCategory"
 
 
 
@@ -14,17 +16,20 @@ import Inicio from "./views/inicio/inicio"
 const App = () => {
 
 
-  return <div className="w-screen h-screen flex justify-center items-center bg-bg-login ">
+  return <div className="relative w-screen h-screen flex  bg-bg-login overflow-x-hidden">
     <Routes>
       <Route path='/' element={<Sesion />}>
-        <Route path='login' element={<Login />}></Route> 
-        <Route path='register' element={<Register/>}></Route>
-        <Route path='home' element={<Home />}>
-          <Route path='inicio' element={<Inicio />}></Route>
-          <Route path='ingresos' element={<Ingresos />}></Route>
-          {/* <Route path='estadisticas' element={<Estadisticas />}></Route> */}
-          </Route>
+        <Route path='login' element={<Login />}></Route>
+        <Route path='register' element={<Register />}></Route>
       </Route>
+
+      <Route path='home' element={<Home />}>
+        <Route path='bills' element={<Gastos />}></Route>
+        <Route path='income' element={<Ingresos />}></Route>
+        <Route path='transaction' element={<Transaccion/>}></Route>
+        <Route path='category' element={<AddCategory/>}></Route>
+      </Route>
+
     </Routes>
 
   </div>

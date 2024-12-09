@@ -7,7 +7,19 @@ export default {
   ],
   theme: {
   	extend: {
-  		borderRadius: {
+  		
+		screens:{
+			xs: '320px',
+			sm: '360px',
+			md: '475px',
+			lg: '580px',
+			xl: '475px',
+			"2xl": "768px",
+			"3xl": "1024px",
+			"4xl": "1440px"
+		},
+		
+		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
