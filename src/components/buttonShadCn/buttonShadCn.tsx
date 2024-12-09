@@ -2,9 +2,10 @@ import { Button } from "@/components/ui/button"
 
 interface ButtonDemoProps {
     label: string
+    handlerSubmit?: ()=>void
 }
 
 export function ButtonDemo(props:ButtonDemoProps) {
-    const {label}=props
-    return <Button>{label}</Button>
+    const {label, handlerSubmit}=props
+    return <Button onClick={handlerSubmit}>{label}</Button>
 }

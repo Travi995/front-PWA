@@ -4,9 +4,10 @@ import { InputDemo } from '@/components/inputShadCn/inputShadCn';
 import { ButtonDemo } from '@/components/buttonShadCn/buttonShadCn';
 import { user } from '@/hooks/users/users';
 import { tpDataUsersLogin } from '@/types/tpDataUsers';
-import { SyntheticEvent } from 'react';
+import { SyntheticEvent, useContext } from 'react';
 import { fetchDefault } from '@/services/fetchDefault';
 import { showAlert } from '@/helpers/showAlert';
+import { GlobalContext } from '@/context/globalContext';
 
 
 
@@ -15,6 +16,8 @@ import { showAlert } from '@/helpers/showAlert';
 
 const Login = () => {
     const navigate = useNavigate()
+
+    const {token,setToken} = useContext(GlobalContext)
 
     const handlerNavigate = (arg: string) => {
         navigate(arg)
@@ -43,9 +46,13 @@ const Login = () => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(dataLogin),
-            }, () => {
+            }, (res:Partial<{token:string}>) => {
                 showAlert({ type: 'success', title: 'Login exitoso', description: '' })
-                navigate('/');
+                if(res.token){
+
+                    setToken(res.token)
+                }
+                navigate('/home/bills');
             }, () => {
                 showAlert({ type: 'error', title: 'Error', description: '' })
             }

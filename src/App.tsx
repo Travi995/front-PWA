@@ -1,5 +1,5 @@
 
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes, useNavigate } from "react-router-dom"
 import Login from "./views/login/login"
 import Sesion from "./views/sesion/sesion"
 import Register from "./views/register/register"
@@ -8,13 +8,15 @@ import Ingresos from "./views/ingresos/ingresos"
 import Gastos from "./views/gastos/gastos"
 import Transaccion from "./views/transaction/transaction"
 import AddCategory from "./views/addCategory/addCategory"
-
-
-
+import { useEffect } from "react"
 
 
 const App = () => {
+  const navigate = useNavigate()
 
+  useEffect(() => {
+    navigate('/login')
+  },[])
 
   return <div className="relative w-screen h-screen flex  bg-bg-login overflow-x-hidden">
     <Routes>

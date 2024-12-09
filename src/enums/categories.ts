@@ -2,8 +2,19 @@ import 'primeicons/primeicons.css';
 
 export const categories = [
     {
-        nombre: 'Salud',
-        icon: 'Pi- manzana',
-        color: 'bg-red-500'
-    }
+        label: 'Salud',
+        icon: 'pi-heart',
+    },
+    {
+        label: 'Hogar',
+        icon: 'pi-home', 
+    },
+    {
+        label: 'Educación',
+        icon: 'pi-graduation-cap', 
+    },
+    {
+        label: 'Alimentos',
+        icon: 'pi-shopping-cart', 
+    },
 ]
