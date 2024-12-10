@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 .p-colorpicker-preview.p-inputtext{
-    width: 1.5rem;
+    width: 2rem;
     border-radius: 5px;
 }

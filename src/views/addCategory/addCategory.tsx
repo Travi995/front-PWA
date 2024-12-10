@@ -1,6 +1,4 @@
 import FormCategory from "@/components/formCategory/formCategory"
-import { tpCategory } from "@/types/tpCategory"
-import { useState } from "react"
 
 
 
