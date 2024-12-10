@@ -22,9 +22,9 @@ export function SelectDemo(props:SelectDemo) {
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectItem value="cup">CUP</SelectItem>
-          <SelectItem value="mlc">EURO</SelectItem>
-          <SelectItem value="usd">USD</SelectItem>
+          <SelectItem value="CUP">CUP</SelectItem>
+          <SelectItem value="EURO">EURO</SelectItem>
+          <SelectItem value="USD">USD</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>

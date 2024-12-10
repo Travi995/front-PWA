@@ -2,15 +2,19 @@ import { ButtonDemo } from "@/components/buttonShadCn/buttonShadCn"
 import Category from "@/components/category/category"
 import NewCategory from "@/components/newCategory/newCategory"
 import { SelectDemo } from "@/components/selectShadCn/selectShadCn"
+import { GlobalContext } from "@/context/globalContext"
 import { categories } from "@/enums/categories"
 import { typeCoin } from "@/hooks/typeCoin/typeCoin"
 import { fetchDefault } from "@/services/fetchDefault"
 import { tpMoney } from "@/types/tpMoney"
+import { useContext } from "react"
 import { useNavigate } from "react-router-dom"
 
 
 
 const Transaction = () => {
+
+    const {token} = useContext(GlobalContext)
 
     const navigate = useNavigate()
 
@@ -28,6 +32,10 @@ const Transaction = () => {
         fetchDefault('http://localhost:3000/api/money', 
             {
                 method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'token': token,
+                },
                 body: JSON.stringify(dataCoin)
             }, 
             (res)=>{console.log(res)},

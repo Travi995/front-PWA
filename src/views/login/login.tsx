@@ -8,6 +8,7 @@ import { SyntheticEvent, useContext } from 'react';
 import { fetchDefault } from '@/services/fetchDefault';
 import { showAlert } from '@/helpers/showAlert';
 import { GlobalContext } from '@/context/globalContext';
+import { convertJWT } from '@/services/convertJWT';
 
 
 
@@ -17,7 +18,7 @@ import { GlobalContext } from '@/context/globalContext';
 const Login = () => {
     const navigate = useNavigate()
 
-    const {token,setToken} = useContext(GlobalContext)
+    const {setToken,setId} = useContext(GlobalContext)
 
     const handlerNavigate = (arg: string) => {
         navigate(arg)
@@ -49,8 +50,9 @@ const Login = () => {
             }, (res:Partial<{token:string}>) => {
                 showAlert({ type: 'success', title: 'Login exitoso', description: '' })
                 if(res.token){
-
+                    setId(convertJWT(res.token).id)
                     setToken(res.token)
+
                 }
                 navigate('/home/bills');
             }, () => {
