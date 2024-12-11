@@ -52,7 +52,7 @@ const Login = () => {
                 if(res.token){
                     setId(convertJWT(res.token).id)
                     setToken(res.token)
-
+                    localStorage.setItem('token',res.token)
                 }
                 navigate('/home/bills');
             }, () => {

@@ -7,14 +7,14 @@ import { categories } from "@/enums/categories"
 import { typeCoin } from "@/hooks/typeCoin/typeCoin"
 import { fetchDefault } from "@/services/fetchDefault"
 import { tpMoney } from "@/types/tpMoney"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
 
 
 const Transaction = () => {
 
-    const {token} = useContext(GlobalContext)
+    const {token,id} = useContext(GlobalContext)
 
     const navigate = useNavigate()
 
@@ -26,9 +26,17 @@ const Transaction = () => {
 
     const handlerChange = (key:keyof tpMoney, arg:string)=>{
         setDataCoin({...dataCoin, [key]:arg})
+        console.log(dataCoin)
     }
 
+    useEffect(()=>{
+        setDataCoin({...dataCoin, "id": String(id)})
+    },[])
+
     const handlerSubmit = ()=>{
+        
+
+     
         fetchDefault('http://localhost:3000/api/money', 
             {
                 method: 'POST',

@@ -8,14 +8,26 @@ import Ingresos from "./views/ingresos/ingresos"
 import Gastos from "./views/gastos/gastos"
 import Transaccion from "./views/transaction/transaction"
 import AddCategory from "./views/addCategory/addCategory"
-import { useEffect } from "react"
+import { useContext, useEffect } from "react"
+import { GlobalContext } from "./context/globalContext"
 
 
 const App = () => {
   const navigate = useNavigate()
+  const {setToken} = useContext(GlobalContext) 
 
   useEffect(() => {
-    navigate('/login')
+    const element = localStorage.getItem('token')
+      
+    if(element ){
+      setToken(element)
+      navigate('/home')
+    }else{
+
+      navigate('/login')
+
+    }
+    
   },[])
 
   return <div className="relative w-screen h-screen flex  bg-bg-login overflow-x-hidden">
