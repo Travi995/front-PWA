@@ -3,7 +3,7 @@ import FormCategory from "@/components/formCategory/formCategory"
 
 
 
-const AddCategory = ()=>{
+const Categories = ()=>{
 
 
     return <div className="w-full h-max flex justify-center">
@@ -11,4 +11,4 @@ const AddCategory = ()=>{
     </div>
 }
 
-export default AddCategory
+export default Categories

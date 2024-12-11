@@ -1,25 +1,19 @@
 import CardCategory from "@/components/cardCategory/cardCategory"
-import CardMe from "@/components/cardMe/cardMe"
-import { useEffect } from "react"
+import CardGraphic from "@/components/cardGraphic/cardGraphic"
 import { useLocation } from "react-router-dom"
 
 
 
-const Gastos = () => {
+const Bills = () => {
 
-    const location = useLocation()
+    const location = useLocation().state
 
-
-    useEffect(()=>{
-        console.log(location.state)
-    },[location.pathname])
-
-
-    
+    const {typeTransaction} = location
+ 
     return <div className="w-screen h-max flex items-center xs:mt-20 xs:flex-col xs:gap-10 2xl:flex-row 2xl:justify-around 2xl:gap-2">
-        <CardMe/>
+        <CardGraphic typeTransaction={typeTransaction}/>
         <CardCategory/>
     </div>
 }
 
-export default Gastos
+export default Bills

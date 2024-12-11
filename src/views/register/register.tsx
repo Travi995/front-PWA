@@ -4,7 +4,6 @@ import { showAlert } from "@/helpers/showAlert"
 import { user } from "@/hooks/users/users"
 import { fetchDefault } from "@/services/fetchDefault"
 import { tpDataUsersRegister } from "@/types/tpDataUsers"
-import { error } from "console"
 import { SyntheticEvent } from "react"
 import { useNavigate } from "react-router-dom"
 
@@ -13,11 +12,13 @@ import { useNavigate } from "react-router-dom"
 const Register = () => {
     const navigate = useNavigate()
 
+
+    const { dataRegister, setDataRegister } = user()
+    
+
     const handlerNavigate = (arg: string) => {
         navigate(arg)
     }
-
-    const { dataRegister, setDataRegister } = user()
 
     const handlerChange = (key: keyof tpDataUsersRegister, arg: string) => {
         setDataRegister({ ...dataRegister, [key]: arg })

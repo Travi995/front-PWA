@@ -1,7 +1,7 @@
 import { showAlert } from "@/helpers/showAlert"
 
 
-export const fetchDefault = async (url: string, init: RequestInit, resolve: (arg: Object) => void, reject: (error:Error) => void) => {
+export const fetchDefault = async (url: string, init: RequestInit, resolve: (arg: Object | []) => void, reject: (error:Error) => void) => {
     return fetch(url, {
         method: 'GET',
         ...init

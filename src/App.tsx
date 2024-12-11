@@ -1,22 +1,19 @@
 
 import { Route, Routes, useNavigate } from "react-router-dom"
-import Login from "./views/login/login"
-import Sesion from "./views/sesion/sesion"
-import Register from "./views/register/register"
 import Home from "./views/home/home"
-import Ingresos from "./views/ingresos/ingresos"
-import Gastos from "./views/gastos/gastos"
-import Transaccion from "./views/transaction/transaction"
-import AddCategory from "./views/addCategory/addCategory"
 import { useContext, useEffect } from "react"
 import { GlobalContext } from "./context/globalContext"
+import Bills from "./views/bills/bills"
+import Income from "./views/income/income"
+import Transaction from "./views/transaction/transaction"
+import Categories from "./views/categories/categories"
 
 
 const App = () => {
   const navigate = useNavigate()
   const {setToken} = useContext(GlobalContext) 
 
-  useEffect(() => {
+  /* useEffect(() => {
     const element = localStorage.getItem('token')
       
     if(element ){
@@ -28,22 +25,23 @@ const App = () => {
 
     }
     
-  },[])
+  },[]) */
 
   return <div className="relative w-screen h-screen flex  bg-bg-login overflow-x-hidden">
     <Routes>
-      <Route path='/' element={<Sesion />}>
+      {/* <Route path='/' element={<Auth />}>
         <Route path='login' element={<Login />}></Route>
         <Route path='register' element={<Register />}></Route>
-      </Route>
+      </Route> */}
 
       <Route path='home' element={<Home />}>
-        <Route path='bills' element={<Gastos />}></Route>
-        <Route path='income' element={<Ingresos />}></Route>
-        <Route path='transaction' element={<Transaccion/>}></Route>
-        <Route path='category' element={<AddCategory/>}></Route>
+        <Route path='bills' element={<Bills />}></Route>
+        <Route path='income' element={<Income />}></Route>
+        <Route path='transaction' element={<Transaction/>}></Route>
+        <Route path='categories' element={<Categories/>}></Route>
       </Route>
 
+      {/* <Route path='admin' element={}></Route> */}
     </Routes>
 
   </div>

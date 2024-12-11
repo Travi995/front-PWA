@@ -2,9 +2,6 @@
 
 import toast from "react-hot-toast"
 
-
-
-
 // Función genérica para mostrar alertas
 
 

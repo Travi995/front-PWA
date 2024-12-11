@@ -8,12 +8,13 @@ const Home = () => {
 
     const navigate = useNavigate()
 
-    const [typeTransaction, setTypeTranscription] = useState<tpTypeTransaction ['typeTransaction']>( 'gastos')
 
+    const [typeTransaction, setTypeTransaction] = useState<tpTypeTransaction ['typeTransaction']>( 'gastos')
+
+    
     useEffect(()=>{
         const element  = {
-            "typeTransaction": 'candela',
-            "setTypeTranscription": setTypeTranscription
+            "typeTransaction": typeTransaction
         }
         if(typeTransaction==='gastos'){
             navigate('/home/bills', {
@@ -27,7 +28,7 @@ const Home = () => {
     }, [typeTransaction])
 
     return <div className="w-screen h-full bg-gray-200">
-        <Navbar typeTransaction={typeTransaction} setTypeTranscription={setTypeTranscription}/>
+        <Navbar typeTransaction={typeTransaction} setTypeTransaction={setTypeTransaction}/>
         <Outlet />
     </div>
 }

@@ -18,13 +18,15 @@ import { convertJWT } from '@/services/convertJWT';
 const Login = () => {
     const navigate = useNavigate()
 
+
     const {setToken,setId} = useContext(GlobalContext)
+
+    const { dataLogin, setDataLogin } = user()
+    
 
     const handlerNavigate = (arg: string) => {
         navigate(arg)
     }
-
-    const { dataLogin, setDataLogin } = user()
 
     const handlerChange = (key: keyof tpDataUsersLogin, arg:string)=>{
         setDataLogin({...dataLogin, [key]:arg})
@@ -36,7 +38,7 @@ const Login = () => {
         const allInputsValid = Object.keys(dataLogin).every((item: string) => {
             const key = item as keyof tpDataUsersLogin;
 
-            return dataLogin[key]; // Retorna true si el campo está validado
+            return dataLogin[key]; 
         });
 
 
@@ -52,7 +54,7 @@ const Login = () => {
                 if(res.token){
                     setId(convertJWT(res.token).id)
                     setToken(res.token)
-                    localStorage.setItem('token',res.token)
+
                 }
                 navigate('/home/bills');
             }, () => {
