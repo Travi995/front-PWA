@@ -1,5 +1,5 @@
 import { Outlet, useNavigate } from "react-router-dom"
-import Navbar from "../../components/navbar/navbar"
+import Navbar from "../../../components/navbar/navbar"
 import { useEffect, useState } from "react"
 import { tpTypeTransaction } from "@/types/tpTypeTransaction"
 

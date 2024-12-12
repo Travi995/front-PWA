@@ -6,3 +6,9 @@
     width: 2rem;
     border-radius: 5px;
 }
+
+/* Input password */
+.p-icon-field.p-icon-field-right{
+    width: 100%;
+
+}
