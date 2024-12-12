@@ -7,7 +7,7 @@ interface NavbarProps{
     setTypeTransaction: (arg:tpTypeTransaction ['typeTransaction'])=>void
 }
 
-const Navbar:FC<NavbarProps> = ({ setTypeTransaction}) => {
+const Navbar:FC<NavbarProps> = ({ typeTransaction,setTypeTransaction}) => {
 
 
     const handlerNavigate = (arg: tpTypeTransaction['typeTransaction']) => {
@@ -20,8 +20,8 @@ const Navbar:FC<NavbarProps> = ({ setTypeTransaction}) => {
         </div>
 
         <ul className="flex w-full justify-around xs:text-xl 2xl:text-3xl">
-            <li className="transition-all duration-200 hover: cursor-pointer hover:text-gray-400" onClick={() => handlerNavigate('gastos')}>Gastos</li>
-            <li className="transition-all duration-200 hover: cursor-pointer hover:text-gray-400" onClick={() => handlerNavigate('ingresos')}>Ingresos</li>
+            <li className={`transition-all duration-200 hover: cursor-pointer hover:text-gray-400 ${typeTransaction==='gastos'?'border-b-2':''}`} onClick={() => handlerNavigate('gastos')}>Gastos</li>
+            <li className={`transition-all duration-200 hover: cursor-pointer hover:text-gray-400 ${typeTransaction==='ingresos'?'border-b-2':''}`} onClick={() => handlerNavigate('ingresos')}>Ingresos</li>
         </ul>
     </nav>
 }

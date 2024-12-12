@@ -56,7 +56,7 @@ const Login = () => {
                     setToken(res.token)
 
                 }
-                navigate('/home/bills');
+                navigate('/home');
             }, () => {
                 showAlert({ type: 'error', title: 'Error', description: '' })
             }

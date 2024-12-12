@@ -15,6 +15,7 @@ const Transaction = () => {
 
     const navigate = useNavigate()
     const [dataCategory, setDataCategory] = useState<any[]>([])
+    const [showCategories, setShowCategories] = useState<boolean>(false)
 
 
 
@@ -33,7 +34,7 @@ const Transaction = () => {
 
     const getCategories = () => {
 
-        fetchDefault('http://localhost:3000/api/categories', {
+        fetchDefault('http://localhost:3000/api/categories',  {
             method: 'GET',
             headers: {
                 // 'Content-Type': 'application/json',
@@ -41,22 +42,24 @@ const Transaction = () => {
             },
         },
             (res) => {
-                if(Array.isArray(res)){
-                    setDataCategory(res)
-                }
+               const element  = res as Object as Partial<{data:[]}>
                 
+                if(element.data){
+                    setDataCategory(element.data)
+                }
             }, () => { }
         )
 
     }
 
+    console.log(dataCategory)
     useEffect(() => {
         setDataCoin({ ...dataCoin, "id": String(id) })
     }, [])
 
     useEffect(()=>{
         getCategories()
-    }, [])
+    }, [showCategories])
 
     const handlerSubmit = () => {
 
@@ -69,7 +72,7 @@ const Transaction = () => {
                 },
                 body: JSON.stringify(dataCoin)
             },
-            (res) => { console.log(res) },
+            () => { setShowCategories(!showCategories) },
             (error) => { console.log(error) }
         )
     }
@@ -83,7 +86,7 @@ const Transaction = () => {
         </div>
         <div className="w-full flex flex-col mt-8">
             <h1 className="text-gray-500">Categorías</h1>
-            <div className="w-full mt-8 justify-between flex">
+            <div className="w-full my-8 justify-between flex gap-10 mb-8">
                 {dataCategory?.map((item, index) => {
                     return <Category key={index} label={item.label} icon={item.icon} color={item.color} />
 

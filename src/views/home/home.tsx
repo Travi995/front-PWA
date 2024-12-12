@@ -18,11 +18,12 @@ const Home = () => {
         }
         if(typeTransaction==='gastos'){
             navigate('/home/bills', {
-                state: JSON.stringify(element)
+                state: element
+                
             })
         }else{
             navigate('/home/income',{
-                state: JSON.stringify(element)
+                state: element
             })
         }
     }, [typeTransaction])

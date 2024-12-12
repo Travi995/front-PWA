@@ -1,20 +1,27 @@
 
 import 'primeicons/primeicons.css';
-import { FC } from 'react';
+import { FC, SyntheticEvent } from 'react';
 
 interface compCategoryProps {
     icon: string 
-    handlerChangeKeys: (icon:string)=>void   
+    handlerChange: (icon:string)=>void   
 }
 
-const CompCategory:FC<compCategoryProps> = ({icon, handlerChangeKeys}) => {
+const CompCategory:FC<compCategoryProps> = ({icon, handlerChange}) => {
 
-    return <div className="relative flex flex-col items-center">
-        <button className="bg-gray-400 transition-all duration-200 w-20 h-20 rounded-full flex items-center justify-center shadow hover:bg-gray-600">
-            <i className={`pi ${icon}`} 
+    const handlerEvent = (e:SyntheticEvent)=>{
+        e.stopPropagation()
+        e.preventDefault()
+
+        handlerChange(icon)
+    }
+
+    return <div onClick={handlerEvent} className="relative flex flex-col items-center">
+        <div onClick={handlerEvent} className="bg-gray-400 transition-all duration-200 w-20 h-20 rounded-full flex items-center justify-center shadow hover:bg-gray-600">
+            <i  className={`pi ${icon}`} 
             style={{fontSize:"1.5rem"}}
-            onClick={()=>handlerChangeKeys(icon)}></i>
-        </button>
+            onClick={handlerEvent}></i>
+        </div>
     </div>
 
 }

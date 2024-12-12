@@ -7,13 +7,16 @@ import Bills from "./views/bills/bills"
 import Income from "./views/income/income"
 import Transaction from "./views/transaction/transaction"
 import Categories from "./views/categories/categories"
+import Auth from "./views/auth/auth"
+import Login from "./views/login/login"
+import Register from "./views/register/register"
 
 
 const App = () => {
   const navigate = useNavigate()
   const {setToken} = useContext(GlobalContext) 
 
-  /* useEffect(() => {
+   useEffect(() => {
     const element = localStorage.getItem('token')
       
     if(element ){
@@ -25,14 +28,14 @@ const App = () => {
 
     }
     
-  },[]) */
+  },[]) 
 
   return <div className="relative w-screen h-screen flex  bg-bg-login overflow-x-hidden">
     <Routes>
-      {/* <Route path='/' element={<Auth />}>
+      <Route path='/' element={<Auth />}>
         <Route path='login' element={<Login />}></Route>
         <Route path='register' element={<Register />}></Route>
-      </Route> */}
+      </Route>
 
       <Route path='home' element={<Home />}>
         <Route path='bills' element={<Bills />}></Route>
