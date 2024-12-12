@@ -35,10 +35,10 @@ const App = () => {
 
   return <div className="relative w-screen h-screen flex  bg-bg-login overflow-x-hidden">
     <Routes>
-      {/* <Route path='/' element={<Auth />}>
+      <Route path='/' element={<Auth />}>
         <Route path='login' element={<Login />}></Route>
         <Route path='register' element={<Register />}></Route>
-      </Route> */}
+      </Route>
 
       <Route path='home' element={<Home />}>
         <Route path='bills' element={<Bills />}></Route>

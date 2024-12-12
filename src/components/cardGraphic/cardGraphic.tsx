@@ -17,7 +17,7 @@ const CardGraphic:FC<CardGraphicProps> = ({typeTransaction}) => {
         navigate(arg, {state: typeTransaction})
     }
 
-    return <div className="bg-white shadow xs:w-[80%] xs:rounded-xl xs:line-clamp-1 2xl:w-2/5 h-96 relative">
+    return <div className="xs:flex xs:items-center xs:justify-center p-8 bg-white shadow h-max xs:w-max xs:rounded-xl xs:line-clamp-1 2xl:w-2/5 relative">
         <GraphicDonuts/>
         <FloatBtn handlerNavigate={()=>handlerNavigate('/home/transaction')}/>
     </div>

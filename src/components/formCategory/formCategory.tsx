@@ -7,13 +7,19 @@ import { ButtonDemo } from '../buttonShadCn/buttonShadCn';
 import { tpCategory } from '@/types/tpCategory';
 import { fetchDefault } from '@/services/fetchDefault';
 import { GlobalContext } from '@/context/globalContext';
+import { useNavigate } from 'react-router-dom';
 
 
 const FormCategory = () => {
 
+    const navigate = useNavigate()
+
     const { token } = useContext(GlobalContext)
 
     const [color, setColor] = useState('#000000');
+
+    const [active, setActive] = useState<boolean>(false)
+
 
     const [category, setCategory] = useState<tpCategory>({
         label: '',
@@ -21,11 +27,19 @@ const FormCategory = () => {
         color: ''
     })
 
+    const handlerNavigate = () => {
+        navigate(-1)
+    }
+
     const handlerChangeColorPicker = (e: ColorPickerChangeEvent) => {
         if (e.value) {
             setColor(e.value as string)
             setCategory({ ...category, 'color': color })
         }
+    }
+
+    const handlerClick = ()=>{
+        setActive(!active)
     }
 
     const handlerChange = (key: keyof tpCategory, arg: string) => {
@@ -44,7 +58,7 @@ const FormCategory = () => {
             },
             body: JSON.stringify(category)
         },
-            () => { }, () => { }
+            () => { handlerNavigate()}, () => { }
         )
     }
 
@@ -53,7 +67,7 @@ const FormCategory = () => {
         <ColorPicker value={color} onChange={handlerChangeColorPicker} />
         <div className='w-full flex justify-around my-10'>
             {iconCategories.map((item, index) => {
-                return <CompCategory key={index} icon={item} handlerChange={(arg) => handlerChange('icon', arg)} />
+                return <CompCategory key={index} icon={item} handlerChange={(arg) => handlerChange('icon', arg)} handlerClick={handlerClick} active={active}/>
             })}
         </div>
         <ButtonDemo  label='Guardar' />

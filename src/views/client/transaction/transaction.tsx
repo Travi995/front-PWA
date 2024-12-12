@@ -8,6 +8,8 @@ import { tpMoney } from "@/types/tpMoney"
 import { useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import BtnAddCategory from "@/components/btnAddCategory/btnAddCategory"
+import { GrFormPrevious } from "react-icons/gr";
+
 
 
 
@@ -26,6 +28,10 @@ const Transaction = () => {
 
     const handlerNavigate = (arg: string) => {
         navigate(arg)
+    }
+
+    const handlerNavigatePrev = () => {
+        navigate(-1)
     }
 
     const handlerChange = (key: keyof tpMoney, arg: string) => {
@@ -79,12 +85,14 @@ const Transaction = () => {
 
 
 
-    return <div className="w-full h-max flex flex-col  items-center xs:my-20 xs:px-20">
+    return <div className="w-full h-max flex flex-col  items-center  xs:px-20 p-8 relative">
+        <GrFormPrevious className='absolute top-10 left-16 text-3xl text-black hover:cursor-pointer' onClick={handlerNavigatePrev}/>
+
         <div className="flex">
             <input className="w-32 bg-transparent border-b-2 border-black focus:outline-none text-center text-2xl text-gray-500" onChange={(e) => handlerChange('value', e.target.value)}></input>
             <SelectDemo handlerChange={(arg: string) => handlerChange('typeCoin', arg)} />
         </div>
-        <div className="w-full flex flex-col mt-8">
+        <div className="w-full flex flex-col mt-20">
             <h1 className="text-gray-500">Categorías</h1>
             <div className="w-full my-8 justify-between flex gap-10 mb-8">
                 {dataCategory?.map((item, index) => {

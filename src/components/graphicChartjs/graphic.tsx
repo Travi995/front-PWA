@@ -9,7 +9,7 @@ const  GraphicDonuts = () => {
     useEffect(() => {
         const documentStyle = getComputedStyle(document.documentElement);
         const data = {
-            labels: ['A', 'B', 'C'],
+            // labels: ['A', 'B', 'C'],
             datasets: [
                 {
                     data: [540, 325, 702],
