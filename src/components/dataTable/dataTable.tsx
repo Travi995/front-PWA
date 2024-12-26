@@ -39,8 +39,8 @@ export default function BasicDemo() {
     );
 
     return (
-        <div className="card w-full h-full flex justify-center items-center">
-            <DataTable value={user} tableStyle={{ minWidth: '80rem'}} header={header}>
+        <div className="card xs:w-[30rem] 2xl:w-full h-full flex justify-center items-center">
+            <DataTable value={user} tableStyle={{ width: '80rem'}} header={header} className='xs:w-[15rem] sm:w-[20rem] 2xl:w-[40rem] 3xl:w-[60rem] 4xl:w-[80rem]'>
                 <Column field="user" header="User"></Column>
                 <Column field="email" header="Email"></Column>
                 <Column field="#transactions" header="No. Transactions"></Column>

@@ -19,7 +19,7 @@ const App = () => {
   const navigate = useNavigate()
   const { setToken } = useContext(GlobalContext)
 
-  useEffect(() => {
+/*   useEffect(() => {
     const element = localStorage.getItem('token')
 
     if (element) {
@@ -31,7 +31,7 @@ const App = () => {
 
     }
 
-  }, [])
+  }, []) */
 
   return <div className="relative w-screen h-screen flex  bg-bg-login overflow-x-hidden">
     <Routes>

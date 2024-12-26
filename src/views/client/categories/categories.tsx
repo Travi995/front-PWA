@@ -15,7 +15,7 @@ const Categories = ()=>{
 
 
     return <div className="w-full h-max flex justify-center relative ">
-        <GrFormPrevious className='absolute top-10 left-16 text-3xl text-black hover:cursor-pointer' onClick={handlerNavigate}/>
+        <GrFormPrevious className='absolute top-10 xs:left-0 sm:left-5 xl:left-16 text-3xl text-black hover:cursor-pointer' onClick={handlerNavigate}/>
         <FormCategory/>
     </div>
 }

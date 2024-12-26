@@ -86,7 +86,7 @@ const Transaction = () => {
 
 
     return <div className="w-full h-max flex flex-col  items-center  xs:px-20 p-8 relative">
-        <GrFormPrevious className='absolute top-10 left-16 text-3xl text-black hover:cursor-pointer' onClick={handlerNavigatePrev}/>
+        <GrFormPrevious className='absolute top-10 xs:left-5 xl:left-16 text-3xl text-black hover:cursor-pointer' onClick={handlerNavigatePrev}/>
 
         <div className="flex">
             <input className="w-32 bg-transparent border-b-2 border-black focus:outline-none text-center text-2xl text-gray-500" onChange={(e) => handlerChange('value', e.target.value)}></input>

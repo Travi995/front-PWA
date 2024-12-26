@@ -5,7 +5,7 @@ import { FC } from "react"
 import GraphicDonuts from "../graphicChartjs/graphic"
 
 interface CardGraphicProps {
-    typeTransaction: tpTypeTransaction['typeTransaction']
+    typeTransaction?: tpTypeTransaction['typeTransaction']
 }
 
 
