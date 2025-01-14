@@ -18,8 +18,7 @@ const Home = () => {
         }
         if(typeTransaction==='gastos'){
             navigate('/home/bills', {
-                state: element
-                
+                state: element,
             })
         }else{
             navigate('/home/income',{

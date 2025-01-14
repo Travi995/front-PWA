@@ -10,7 +10,7 @@ const BtnAddCategory: FC<btnAddCategoryProps> = ({ handlerNavigate }) => {
         <button className="bg-gray-500 transition-all duration-200 xs:w-20 xs:h-20 rounded-full flex items-center justify-center shadow hover:bg-gray-600" onClick={handlerNavigate}>
             <IoIosAdd className="w-10 h-10 text-white" />
         </button>
-        <span className="absolute bottom-0">Add category</span>
+        <span className="absolute bottom-0 w-28 h-6 text-[12px]">Agregar categoría</span>
     </div>
 
 }

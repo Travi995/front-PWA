@@ -65,7 +65,7 @@ const FormCategory = () => {
     return <form onSubmit={handlerSubmit} className='flex flex-col gap-4 items-center py-8 px-2 w-full'>
         <input placeholder="Nombre de la categoría" className='p-2 rounded-xl' onChange={(e) => handlerChange('label', e.target.value)}></input>
         <ColorPicker value={color} onChange={handlerChangeColorPicker} />
-        <div className='w-full flex flex-wrap gap-4 justify-around my-10'>
+        <div className='w-full flex flex-wrap gap-4 justify-around my-10 mb-40'>
             {iconCategories.map((item, index) => {
                 return <CompCategory key={index} icon={item} handlerChange={(arg) => handlerChange('icon', arg)} handlerClick={handlerClick} active={active}/>
             })}
