@@ -1,15 +1,15 @@
 
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Chart } from 'primereact/chart';
 
-const  GraphicDonuts = () => {
+export default function GraphicDonuts() {
     const [chartData, setChartData] = useState({});
     const [chartOptions, setChartOptions] = useState({});
 
     useEffect(() => {
         const documentStyle = getComputedStyle(document.documentElement);
         const data = {
-            // labels: ['A', 'B', 'C'],
+            labels: ['A', 'B', 'C'],
             datasets: [
                 {
                     data: [540, 325, 702],
@@ -46,5 +46,4 @@ const  GraphicDonuts = () => {
         </div>
     )
 }
-     
-export default GraphicDonuts
+        

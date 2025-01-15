@@ -1,33 +1,37 @@
 
-import React, { useState, useEffect } from 'react';
+import  { FC } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import { fetchDefault } from '@/services/fetchDefault';
-import { Button } from '../ui/button';
+
 import { ButtonDemo } from '../buttonShadCn/buttonShadCn';
 import { useNavigate } from 'react-router-dom';
 
-interface User {
+export interface User {
+    id: number
     name: string;
     email: string;
-    transactions: number;
-    totalMoney: number;
-    rol: string;
+    transactions: [];
+    amount: number;
+    roleUser: string;
+    currency: string;
+    
+
 }
 
-export default function BasicDemo() {
+interface dataTable{
+    refreshUser: boolean,
+    data:User[],
+    setRefreshUser: (arg:boolean)=>void
+}
+
+const  BasicDemo:FC<dataTable > =({data,refreshUser,setRefreshUser})=> {
 
     const navigate = useNavigate()
 
-    const [user, setUser] = useState<User[]>([
-    ]);
-
-    useEffect(() => {
-        
-    }, []);
+   
 
     const handlerNavigate = (arg:string)=>{
-        navigate(arg)
+        navigate(arg,{state:{refreshUser, setRefreshUser}})
     }
 
 
@@ -40,15 +44,19 @@ export default function BasicDemo() {
 
     return (
         <div className="card xs:w-[30rem] 2xl:w-full h-full flex justify-center items-center">
-            <DataTable value={user} tableStyle={{ width: '80rem'}} header={header} className='xs:w-[15rem] sm:w-[20rem] 2xl:w-[40rem] 3xl:w-[60rem] 4xl:w-[80rem]'>
-                <Column field="user" header="User"></Column>
+            <DataTable value={data} tableStyle={{ width: '80rem'}} header={header} className='xs:w-[15rem] sm:w-[20rem] 2xl:w-[40rem] 3xl:w-[65rem] 4xl:w-[80rem]'>
+                <Column field="id" header="Id"></Column>
+                <Column field="name" header="Nombre"></Column>
                 <Column field="email" header="Email"></Column>
-                <Column field="#transactions" header="No. Transactions"></Column>
-                <Column field="totalMoney" header="Total Money"></Column>
-                <Column field="rol" header="Roles"></Column>
+                <Column field="currency" header="Tipo moneda"></Column>
+                <Column field="amount" header="Dinero total"></Column>
+                <Column field="roleUser" header="Roles"></Column>
                 <Column field="actions" header="Actions"></Column>
+
             </DataTable>
         </div>
     );
 }
+
+export default BasicDemo
 

@@ -1,7 +1,8 @@
+import { tpSelectTypeMoney } from "./tpSelectTypeMoney"
 
 export type tpMoney = {
     id: string,
-    typeCoin: string,
+    typeCoin: tpSelectTypeMoney,
     value: number,
-    type: 'gastos' | 'ingresos'
+    type: 'Gasto' | 'Ingreso'
 }

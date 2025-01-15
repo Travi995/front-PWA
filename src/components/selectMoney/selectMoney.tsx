@@ -2,11 +2,12 @@ import { InputText } from "primereact/inputtext"
 import CheckmarkDemo from "../selectReactPrime/selectReactPrime"
 import { FC, useState } from "react"
 import { tpMoney } from "@/types/tpMoney"
+import { tpSelectTypeMoney } from "@/types/tpSelectTypeMoney"
 
 
 interface ItfSelectMoney {
     handlerChange: (key: keyof tpMoney, arg:string)=> void
-    dataMoney: string
+    dataMoney: tpSelectTypeMoney
 }
 
 

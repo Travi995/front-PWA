@@ -14,9 +14,6 @@ import { Password } from 'primereact/password';
 
 
 
-
-
-
 const Login = () => {
     const navigate = useNavigate()
 
@@ -69,7 +66,7 @@ const Login = () => {
 
 
     return <form className="bg-white w-[30rem] h-max rounded-3xl flex flex-col items-center p-10 gap-4" onSubmit={handlerSubmit}>
-        <h1 className="text-3xl font-bold w-[15rem] text-center">Bienvenido a CG</h1>
+        <h1 className="text-3xl font-bold w-[15rem] text-center">Bienvenido a Financius</h1>
         <div className='flex flex-col w-[90%] gap-4 py-8'>
             <InputText className='p-2 bg-transparent border-2 border-gray-200 text-gray-500' keyfilter="email" placeholder='Email' onChange={(e)=>handlerChange('email',e.target.value)}/>
             <Password  inputStyle={{ padding: '0.5rem', width: '100%', background: 'transparent', border: '2px solid #E5E7EB', color: '#6B7280'}} placeholder='Password' feedback={false} tabIndex={1} toggleMask onChange={(e)=>handlerChange('password',e.target.value)}/>

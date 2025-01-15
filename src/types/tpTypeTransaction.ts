@@ -1,3 +1,3 @@
  export type tpTypeTransaction = {
-    typeTransaction: 'gastos' | 'ingresos'
+    typeTransaction: 'Gasto' | 'Ingreso'
 }

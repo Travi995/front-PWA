@@ -13,25 +13,33 @@ import Register from "./views/auth/register/register"
 import Admin from "./views/admin/admin/admin"
 import HomeAdmin from "./views/admin/adminHome/adminHome"
 import FormAddUser from "./views/admin/formAdmin/formAdmin"
+import { convertJWT } from "./services/convertJWT"
 
 
 const App = () => {
+	const { token, setToken } = useContext(GlobalContext)
   const navigate = useNavigate()
-  const { setToken } = useContext(GlobalContext)
 
-/*   useEffect(() => {
-    const element = localStorage.getItem('token')
-
-    if (element) {
-      setToken(element)
-      navigate('/home')
-    } else {
-
+	useEffect(() => {
+		const temp = sessionStorage.getItem('finanzas_userToken')
+		if (temp) {
+			setToken(temp)
+      const rol:any= convertJWT(temp)
+      if(rol.role==='admin'){
+        navigate('/admin/adminHome')
+      }
+    } else if (token) {
+      sessionStorage.setItem('finanzas_userToken', token)
+      const rol:any= convertJWT(token)
+      if(rol.role==='admin'){
+        navigate('/admin/adminHome')
+      }
+		}else{
       navigate('/login')
-
     }
-
-  }, []) */
+		//redireccionar al login cuando kiera
+  
+	}, [token])
 
   return <div className="relative w-screen h-screen flex  bg-bg-login overflow-x-hidden">
     <Routes>

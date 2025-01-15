@@ -3,3 +3,7 @@ export type tpCategory = {
     icon: string,
     color: string
 }
+
+export type tpIdCategory ={
+    id: number
+}&tpCategory

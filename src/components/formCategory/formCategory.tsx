@@ -34,11 +34,12 @@ const FormCategory = () => {
     const handlerChangeColorPicker = (e: ColorPickerChangeEvent) => {
         if (e.value) {
             setColor(e.value as string)
-            setCategory({ ...category, 'color': color })
+            setCategory({ ...category, 'color': e.value as string })
+
         }
     }
 
-    const handlerClick = ()=>{
+    const handlerClick = () => {
         setActive(!active)
     }
 
@@ -46,10 +47,9 @@ const FormCategory = () => {
         setCategory({ ...category, [key]: arg })
     }
 
-    const handlerSubmit = (e:SyntheticEvent) => {
+    const handlerSubmit = (e: SyntheticEvent) => {
         e.preventDefault()
-        console.log(token)
-        console.log(category)
+
         fetchDefault('http://localhost:3000/api/categories', {
             method: 'POST',
             headers: {
@@ -58,19 +58,21 @@ const FormCategory = () => {
             },
             body: JSON.stringify(category)
         },
-            () => { handlerNavigate()}, () => { }
+            () => { handlerNavigate() }, () => { }
         )
     }
 
     return <form onSubmit={handlerSubmit} className='flex flex-col gap-4 items-center py-8 px-2 w-full'>
-        <input placeholder="Nombre de la categoría" className='p-2 rounded-xl' onChange={(e) => handlerChange('label', e.target.value)}></input>
-        <ColorPicker value={color} onChange={handlerChangeColorPicker} />
-        <div className='w-full flex flex-wrap gap-4 justify-around my-10 mb-40'>
+        <div className='flex gap-4 items-center justify-center'>
+            <input placeholder="Nombre de la categoría" className='p-2 rounded-xl' onChange={(e) => handlerChange('label', e.target.value)}></input>
+            <ColorPicker value={color} onChange={handlerChangeColorPicker} />
+        </div>
+        <div className='w-full flex flex-wrap gap-4 justify-around my-10 mb-40 ' >
             {iconCategories.map((item, index) => {
-                return <CompCategory key={index} icon={item} handlerChange={(arg) => handlerChange('icon', arg)} handlerClick={handlerClick} active={active}/>
+                return <CompCategory key={index} icon={item} handlerChange={(arg) => handlerChange('icon', arg)} handlerClick={handlerClick} active={active} />
             })}
         </div>
-        <ButtonDemo  label='Guardar' />
+        <ButtonDemo label='Guardar' />
     </form>
 }
 
