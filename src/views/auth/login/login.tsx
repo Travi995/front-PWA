@@ -48,7 +48,7 @@ const Login = () => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(dataLogin),
-            }, (res:Partial<{token:string}>) => {
+            }, (res:any) => {
                 showAlert({ type: 'success', title: 'Login exitoso', description: '' })
                 if(res.token){
                     setId(convertJWT(res.token).id)

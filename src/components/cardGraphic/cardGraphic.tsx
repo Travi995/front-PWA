@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import FloatBtn from "../floatBtn/floatBtn"
 import { tpTypeTransaction } from "@/types/tpTypeTransaction"
-import { FC, useContext, useEffect, useState } from "react"
+import { FC, useContext, useEffect } from "react"
 import GraphicDonuts from "../graphicChartjs/graphic"
 import { fetchDefault } from "@/services/fetchDefault"
 import { GlobalContext } from "@/context/globalContext"
@@ -17,9 +17,6 @@ const CardGraphic:FC<CardGraphicProps> = ({typeTransaction}) => {
 
     const { token } = useContext(GlobalContext)
 
-    const [dataGasto, setDataGasto] = useState<any>([])
-    const [dataIngreso, setDataIngreso] = useState<any>([])
-
 
     useEffect(()=>{
         if(token){
@@ -33,10 +30,6 @@ const CardGraphic:FC<CardGraphicProps> = ({typeTransaction}) => {
             },
                 (res:any) => {
                     console.log(res)
-                    const arrGasto = res.filter((arg:Partial<{typeTransaction: 'Gasto' | 'Ingreso'}>)=>arg.typeTransaction === 'Gasto')
-                    const arrIngreso = res.filter((arg:Partial<{typeTransaction: 'Gasto' | 'Ingreso'}>)=>arg.typeTransaction === 'Ingreso')
-                    setDataGasto(arrGasto)
-                    setDataIngreso(arrIngreso)
     
                  }, () => { }
             )
