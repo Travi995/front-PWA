@@ -7,6 +7,9 @@ export default {
   ],
   theme: {
   	extend: {
+		backgroundImage: {
+			cubes: 'url("https://www.transparenttextures.com/patterns/cubes.png")',
+		},
   		
 		screens:{
 			xs: '320px',

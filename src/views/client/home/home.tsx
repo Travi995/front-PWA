@@ -51,7 +51,7 @@ const Home = () => {
 
     }, [token,refreshUser])
 
-    return <div className="w-screen h-full bg-gray-200">
+    return <div className="w-screen h-full bg-slate-100 bg-cubes">
         <Navbar typeTransaction={typeTransaction} setTypeTransaction={setTypeTransaction}/>
         <Outlet />
     </div>
