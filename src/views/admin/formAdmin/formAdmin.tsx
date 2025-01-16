@@ -25,7 +25,7 @@ const FormAdmin = () => {
         fetchDefault('http://localhost:3000/api/user', {
             method: 'POST',
             headers: {
-                // 'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
                 'token': token
             },
             body: JSON.stringify(addUser)

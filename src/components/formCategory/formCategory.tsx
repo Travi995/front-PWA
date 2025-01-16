@@ -32,6 +32,7 @@ const FormCategory = () => {
     }
 
     const handlerChangeColorPicker = (e: ColorPickerChangeEvent) => {
+        e.preventDefault?.()
         if (e.value) {
             setColor(e.value as string)
             setCategory({ ...category, 'color': e.value as string })

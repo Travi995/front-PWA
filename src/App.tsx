@@ -25,6 +25,7 @@ const App = () => {
 		if (temp) {
 			setToken(temp)
       const rol:any= convertJWT(temp)
+      console.log(rol)
       if(rol.role==='admin'){
         navigate('/admin/adminHome')
       }

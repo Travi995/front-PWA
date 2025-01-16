@@ -19,19 +19,17 @@ export interface User {
 }
 
 interface dataTable{
-    refreshUser: boolean,
     data:User[],
-    setRefreshUser: (arg:boolean)=>void
 }
 
-const  BasicDemo:FC<dataTable > =({data,refreshUser,setRefreshUser})=> {
+const  BasicDemo:FC<dataTable > =({data})=> {
 
     const navigate = useNavigate()
 
    
 
     const handlerNavigate = (arg:string)=>{
-        navigate(arg,{state:{refreshUser, setRefreshUser}})
+        navigate(arg)
     }
 
 

@@ -32,7 +32,7 @@ const HomeAdmin = ()=>{
     }, [refreshUser])
 
     return <div className="w-full h-full flex justify-center items-center">
-        <BasicDemo data={dataUser} refreshUser={refreshUser} setRefreshUser={setRefreshUser}/>
+        <BasicDemo data={dataUser} />
     </div>
 }
 
